@@ -195,24 +195,54 @@ By default the analysis in Docker runs with the following analysis options: ```-
 This table lists some of the available STRAIT options. 
 A more comprehensive list can be seen with the Help command.
 
-| Short option | Long option | Arguments |
-| :---: | :---: | :---: |
-| -h | --help | - |
-| -url | - | [Repository URL] |
-| -asl | --allSnapshotsList | - |
-| -sn | --snapshotName | - |
-| -cf | - |  [Path to config file]|
-| -sl | --snapshotsList | - |
-| -e | --evaluate | [Output file name] |
-| -p | --predict | [Number of time units for prediction] |
-| -fl | --filterLabel | [Label names] |
-| -fc | --filterClosed | - |
-| -ft | --filterTime | [From] [To] |
-| -fde | --filterDefects | - |
-| -fdu | --filterDuplications | - |
-| -ms | --models | [Models] |
-| -pt | --periodOfTesting | [Testing period time unit] |
-| -tb | --timBetweenIssues | [Time unit for TBF] |
-| -gm | --graphMultiple | - |
-| -so | --solver | [Solver] |
-| -out | - | [Output type] |
+| Short option |     Long option      |               Arguments               |
+|:------------:|:--------------------:|:-------------------------------------:|
+|     -h       |       --help         |                  -                    |
+|     -url     |          -           |           [Repository URL]            |
+|     -asl     |  --allSnapshotsList  |                   -                   |
+|     -sn      |    --snapshotName    |                   -                   |
+|     -cf      |          -           |         [Path to config file]         |
+|     -sl      |   --snapshotsList    |                   -                   |
+|      -e      |      --evaluate      |          [Output file name]           |
+|      -p      |      --predict       | [Number of time units for prediction] |
+|     -fl      |    --filterLabel     |             [Label names]             |
+|     -fc      |    --filterClosed    |                   -                   |
+|     -ft      |     --filterTime     |              [From] [To]              |
+|     -fde     |   --filterDefects    |                   -                   |
+|     -fdu     | --filterDuplications |                   -                   |
+|     -ms      |       --models       |               [Models]                |
+|     -pt      |  --periodOfTesting   |      [Testing period time unit]       |
+|     -tb      |  --timBetweenIssues  |          [Time unit for TBF]          |
+|     -gm      |   --graphMultiple    |                   -                   |
+|     -so      |       --solver       |               [Solver]                |
+|     -out     |          -           |             [Output type]             |
+
+# Table - models
+
+To use specific models in the analysis, provide their options as arguments to the \-ms option.
+The table below lists the available model options.
+Specify one or more of these values after \-ms to select which models to apply.
+Multiple model options can be given, separated by spaces.
+
+| Option |         Model         |
+|:------:|:---------------------:|
+|   em   |      Empty model      |
+|   du   |         Duane         |
+|   go   |     Goel Okumoto      |
+|  gos   | Goel Okumoto S-Shaped |
+|   hd   |    Hossain Dahiya     |
+|   jw   |     Jinyong Wang      |
+|   li   |          Li           |
+|   ll   |     Log Logistic      |
+|   mo   |     Musa Okumoto      |
+|   go   |     Goel Okumoto      |
+|  pnz   |  Pham Nordmann Zhang  |
+|   pz   |      Pham Zhang       |
+|   wa   |         Wang          |
+|   we   |        Weibull        |
+|   ye   |  Yamada Exponential   |
+|   yr   |    Yamada Raleigh     |
+
+Example usage of the model options, which will run the last 2 models in the list:
+
+```java -jar strait.jar -url https://github.com/stretchr/testify -e -fde -fc -fdu -ms ye yr```
